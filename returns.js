@@ -1,7 +1,7 @@
 
 //soln1
 // const id  = (n) => n 
-// const getLength = (n) => n [0]
+// const getLength = (n) => n .length
 
 
 
@@ -11,5 +11,5 @@ function id(n) {
 }
 
 function getLength(n) {
-    return n[0];
+    return n.length;
 }
