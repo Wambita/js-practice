@@ -9,8 +9,4 @@ function last(n) {
 function  kiss(n) {
    return [first(n), last(n)]
 }
-  
 
-console.log(first("fana"))
-console.log(last("fana"))
-console.log(kiss("fana"))
