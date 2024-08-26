@@ -10,7 +10,11 @@ function sign (n) {
 
 
 function sameSign(a,b) {
-  return sign(a) === sign(b)
+ if (sign(a) === sign(b)) {
+    return true;
+ } else {
+    return false;
+ }
 }
 
 // console.log(sign(5))
