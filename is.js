@@ -1,4 +1,4 @@
-const is = {}
+//const is = {}
 
 //check if  value is a number using typeof and strict equal
 is.num =  function(n) {
@@ -37,7 +37,11 @@ is.arr = function(arr){
 
 //checkif the  value is a simple  object or null  object  //type of array is object
 is.obj = function(obj){
-    return  obj !==null  || (typeof obj === 'object' && !Array.isArray(obj))
+   if ((obj  === null) || (typeof obj  === 'object' && !Array.isArray(obj))) {
+    return true
+   }  else {
+    return false
+   }
 }
 
 //chack if value is function using typeof and stric t equal 
