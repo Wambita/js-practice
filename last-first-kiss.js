@@ -1,0 +1,16 @@
+function first (n) {
+    return n[0];
+}
+
+function last(n) {
+    return n[n.length - 1];
+}
+
+function  kiss(n) {
+   return [first(n), last(n)]
+}
+  
+
+console.log(first("fana"))
+console.log(last("fana"))
+console.log(kiss("fana"))
