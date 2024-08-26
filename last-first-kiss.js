@@ -7,6 +7,6 @@ function last(n) {
 }
 
 function  kiss(n) {
-   return [first(n), last(n)]
+   return [last(n), first(n)]
 }
 
