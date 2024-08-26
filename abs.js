@@ -1,6 +1,6 @@
 const   isPositive=  (n)  => (n >0   ? true : false)
 
-const abs = (n) => (n>0 ? n  : -n)
+const abs = (n) => (n>=0 ? n  : -n)
 
 // function abs(n) {
 //     if (isPositive(n)){
@@ -16,3 +16,4 @@ const abs = (n) => (n>0 ? n  : -n)
 // console.log(isPositive(-44))
 // console.log(abs(44))
 // console.log(abs(-44))
+// console.log(abs(0))
