@@ -24,7 +24,7 @@ function dogYears(planet,  age)  {
     case "uranus":
     case "neptune":                
    planetAge= (age /secondsInYear) /orbitalPeriod[planet]* dogYearsPerYear
-   return parseFloat(planetYear.toFixed(2))
+   return parseFloat(planetAge.toFixed(2))
     default:
         return "Invalid planet name"
    
