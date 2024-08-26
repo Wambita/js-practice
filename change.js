@@ -1,18 +1,21 @@
-function  get(obj, key) {
-    return(obj[key])
+const sourceObject = {
+    num: 42,
+    bool: true,
+    str: 'some text',
+    log: console.log,
+  }
+  
+
+function  get(key) {
+    return  sourceObject[key];
 }
 
 
-function set (obj, key, value) {
-    obj[key] = value
-    return(obj[key])
+function set (key, value) {
+    sourceObject[key] = value
+    return(sourceObject[key])
 }
-// // Example usage
-// const person = {
-//     name: "Alice",
-//     age: 25,
-//     occupation: "Engineer"
-// };
 
-// console.log(get(person, "name"));  
-// console.log(set(person, "occupation", "farmer"));
+
+// console.log(get("num"))
+// console.log(set('num', 22));
