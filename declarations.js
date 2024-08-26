@@ -14,7 +14,7 @@ const obj = {
 
 //nested
 const  nested = {
-    arr:  [3, 4 , undefined, '2'],
+    arr:  [ 4 , undefined, '2'],
     obj : {
         str : "fana",
         num : 6,
