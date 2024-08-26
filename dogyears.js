@@ -18,7 +18,7 @@ function dogYears(planet,  age)   {
 
     if (orbitalPeriod.hasOwnProperty(planet)) {
         planetYear = ((age / secondsInYear) / orbitalPeriod[planet] )* 7
-        return planetYear.toFixed(2)
+       return parseFloat(planetYear.toFixed(2))
     } else {
         return "Invalid planet name"
     }

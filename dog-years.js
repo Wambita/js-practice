@@ -14,8 +14,6 @@ function dogYears(planet,  age)  {
  const  dogYearsPerYear= 7
  let planetAge;
 
-
-
  switch (planet.toLowerCase()) {
     case  "earth":
     case  "mercury":
@@ -26,7 +24,7 @@ function dogYears(planet,  age)  {
     case "uranus":
     case "neptune":                
    planetAge= (age /secondsInYear) /orbitalPeriod[planet]* dogYearsPerYear
-    return planetAge.toFixed(2)
+   return parseFloat(planetYear.toFixed(2))
     default:
         return "Invalid planet name"
    
