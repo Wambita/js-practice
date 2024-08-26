@@ -37,7 +37,7 @@ is.arr = function(arr){
 
 //checkif the  value is a simple  object or null  object  //type of array is object
 is.obj = function(obj){
-   if ((obj  === null) || (typeof obj  === 'object' && !Array.isArray(obj))) {
+   if ((obj  !== null) && (typeof obj  === 'object') && (!Array.isArray(obj))) {
     return true
    }  else {
     return false
