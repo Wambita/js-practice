@@ -5,7 +5,7 @@ function arrToSet(arr ) {
 
 //convert array to string
 function arrToStr(arr){
-    return  arr.join(' ');
+    return arr.join('');
 }
 
 //convert set to array
@@ -68,6 +68,8 @@ function superTypeOf(val) {
     if (val instanceof Map) return 'Map'
     return typeof value
 }
+
+//console.log(arrToStr(['my', 'name', 'js']))
 // // Examples
 // const str = 'hello';
 // const arr = [1, 2, 1, 3];
