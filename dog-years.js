@@ -16,6 +16,7 @@ function dogYears(planet,  age)  {
 
    planetAge= (age /secondsInYear) /orbitalPeriod[planet]* dogYearsPerYear
    return parseFloat(planetAge.toFixed(2))
+//return Number(planetAge.toFixed(2))
  
  }
 
