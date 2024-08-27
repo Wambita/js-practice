@@ -62,6 +62,9 @@ function superTypeOf(val) {
     if (val instanceof Map) return 'Map';
     if (typeof val === 'object') return 'Object';
     if (typeof val === 'string') return 'String';
+    if (typeof val === 'number') return 'Number'
+    if (typeof val === 'NaN') return 'Number'
+    if (typeof val  === 'function') return 'Function'
     return typeof val
 }
 
