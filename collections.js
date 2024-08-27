@@ -20,7 +20,7 @@ function setToStr(set){
 
 //convert string to array
 function strToArr(str) {
-    return str.split(' ');
+    return str.split('');
 }
 
 //convert string  to set
