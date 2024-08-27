@@ -45,31 +45,25 @@ function objToMap(obj){
 
 //convert array to object
 function arrToObj(arr){
-    return arr.reduce((accumulator, curr, i) => {
-        accumulator[i] =curr;
-        return accumulator;
-    } , {})
+    return Object.assign({}, arr)
 }
 
 //convert string to obj
 function strToObj(str) {
-    str = str.split(' ')
-    return str.reduce((acc, char, i) =>{
-        acc[i] = char
-        return acc;
-    }, {})
+    str = strToArr(str)
+    return arrToObj(str)
 }
 
 //specific type of input
 function superTypeOf(val) {
-    if (val === null) return 'null';
+    if (val === null) return 'null'
     if (val instanceof Array) return 'Array';
     if (val instanceof Set) return 'Set';
-    if (val instanceof Map) return 'Map'
-    return typeof value
+    if (val instanceof Map) return 'Map';
+    return typeof val
 }
 
-//console.log(arrToStr(['my', 'name', 'js']))
+// console.log(arrToStr(['my', 'name', 'js']))
 // // Examples
 // const str = 'hello';
 // const arr = [1, 2, 1, 3];
