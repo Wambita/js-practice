@@ -1,20 +1,30 @@
 function getAcceleration(obj) {
 let a;
 
-if (obj.f !== undefined  && obj.m !== undefined) {
-    //a = f/m
-    a = obj.f/obj.m;
-} else if (obj.Δv !== undefined  && obj.Δt !== undefined) {
-    //a =v/t
-    a = obj.Δv/obj.Δt
-} else if  (obj.d !== undefined && obj.t !== undefined) {
-    //a =d/t
-    a = 2*obj.d/ (obj.t*obj.t)
-}  else {
+if(!!obj .f && !!obj.m) {
+    a = obj.f/obj.m
+} else if (!!obj.Δv && !!obj.Δt){
+    a = obj.Δv && obj.Δt
+} else if (!!obj.d && !!obj.t){
+    a = 2 * obj.d / obj.t * obj.t
+} else {
     return "impossible"
 }
-
 return a
+// if (obj.f !== undefined  && obj.m !== undefined) {
+//     //a = f/m
+//     a = obj.f/obj.m;
+// } else if (obj.Δv !== undefined  && obj.Δt !== undefined) {
+//     //a =v/t
+//     a = obj.Δv/obj.Δt
+// } else if  (obj.d !== undefined && obj.t !== undefined) {
+//     //a =d/t
+//     a = 2*obj.d/ (obj.t*obj.t)
+// }  else {
+//     return "impossible"
+// }
+
+// return a
 
 
 }
@@ -30,4 +40,5 @@ return a
   
 // }
 
-// console.log(getAcceleration(obj))
+//console.log(getAcceleration(obj))
+
