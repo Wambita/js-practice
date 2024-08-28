@@ -11,6 +11,11 @@ if(!!obj .f && !!obj.m) {
     return "impossible"
 }
 return a
+}
+
+
+//function getAcceleration(obj){
+//  let a;
 // if (obj.f !== undefined  && obj.m !== undefined) {
 //     //a = f/m
 //     a = obj.f/obj.m;
@@ -25,9 +30,7 @@ return a
 // }
 
 // return a
-
-
-}
+//}
 
 
 // obj = {
@@ -39,6 +42,10 @@ return a
 //     d: 10
   
 // }
+// console.log(getAcceleration(obj))
 
-//console.log(getAcceleration(obj))
-
+// function  getAcceleration(obj){
+//     return !!obj.f && !!obj.m ? (obj.f/obj.m) :
+//                   !!obj.Δv && !!obj.Δt ? (obj.Δv/obj.t):
+//                   !!obj.t && !!obj.d ? (2 * obj.d/obj.t * obj.t) :  "impossible"
+// }
