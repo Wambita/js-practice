@@ -1,8 +1,17 @@
 function multiply  (a,b ){
     let result = 0;
+    let isneg = false;
+    if (b < 0) {
+        isneg = true;
+        b = -b
+    }
     for (var i=0; i <b; i++) {
         result += a
     }
+    if (isneg ) {
+        return  -result
+    }
+
     return result
 }
 
@@ -25,5 +34,5 @@ function modulo(a,b){
     return a
 }
 
-//console.log(multiply(34, 78))
+console.log(multiply(123, -22))
 
