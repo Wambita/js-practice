@@ -1,8 +1,9 @@
 function multiply  (a,b ){
-    for (var i=0; i <b; i+=b) {
-        a += a
+    let result = 0;
+    for (var i=0; i <b; i++) {
+        result += a
     }
-    return a
+    return result
 }
 
 
@@ -24,5 +25,5 @@ function modulo(a,b){
     return a
 }
 
-console.log(modulo(16, 3))
+//console.log(multiply(34, 78))
 
