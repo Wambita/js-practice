@@ -1,52 +1,47 @@
-function multiply  (a,b ){
-    let result = 0;
-    let isneg = false;
-    if (b < 0) {
-        isneg = true;
-        b = -b
-    }
-    for (var i=0; i <b; i++) {
-        result += a
-    }
-    if (isneg ) {
-        return  -result
-    }
-
-    return result
-}
-
-
-function divide (a,b) {
-    let count = 0 ;
-    if ((b > a)  || (a === 0) ){
+function multiply (a, b) {
+    if((a ===0) || (b ===0)) {
         return 0
     }
 
- if (b === 0) {
-    return "Error: Division by zero"
+    const allneg = (a <0 ) === (b <0)
+    b = Math.abs(b)
+    a = Math.abs(a)
+    let res = 0;
+    for (var i=0; i<b; i++){
+        res += a
+    }
+
+    if (allneg) {
+        return res
+    }
+    return -res
 }
-const allneg = (a < 0) === (b <0)
-    for (var i=a-1; i >= b; i-=b) {
-        a = a - b
+
+
+function divide (a, b) {
+    if(b === 0) {
+        return ('Cannot divide by zero')
+    } else if  (a === 0) {
+        return 0
+    }
+    const allneg = (a <0 ) === (b <0)
+    b = Math.abs(b)
+    a = Math.abs(a)
+    let count = 0;
+    while(a  >b) {
+        a -= b
         count ++
     }
     if (allneg) {
-        return count 
+        return count
     }
-    return -count
+  return -count
 }
 
-
-function modulo(a,b){
-    if  (b > a) {
-        return 0
-    }
- for (var i=a; i >=b; i-=b) {
-        a  =a- b
-    }
-    return a
+function modulo(a, b ){
+    quotient = divide(a,b)
+    modulo = a - multiply(quotient,b)
+    return modulo
 }
 
-console.log(multiply(123, -22))
- console.log(divide(78, 34))
-
+console.log(modulo(21, 6))
