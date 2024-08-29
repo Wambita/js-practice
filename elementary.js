@@ -39,9 +39,9 @@ function divide (a, b) {
 }
 
 function modulo(a, b ){
-    quotient = divide(a,b)
+    let quotient = divide(a,b)
     modulo = a - multiply(quotient,b)
     return modulo
 }
 
-console.log(modulo(21, 6))
+//console.log(modulo(21, 6))
