@@ -38,6 +38,8 @@ function divide (a, b) {
   return -count
 }
 
+//const modulo = (a,b) =>  a - multiply(divide(a,b), b)
+
 function modulo(a, b ){
     let quotient = divide(a,b)
     modulo = a - multiply(quotient,b)
