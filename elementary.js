@@ -19,6 +19,9 @@ function multiply  (a,b ){
 function divide (a,b) {
     let count = 0 ;
 
+    if (b > a) {
+        return 0
+    }
     for (var i=a-1; i >= 0; i-=b) {
         a = a - b
         count ++
@@ -34,5 +37,6 @@ function modulo(a,b){
     return a
 }
 
-console.log(multiply(123, -22))
+// console.log(multiply(123, -22))
+// console.log(divide(34, 78))
 
