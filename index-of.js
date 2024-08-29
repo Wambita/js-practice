@@ -11,9 +11,9 @@ return -1
 }
 
 
-function lastIndexOf(arr, val, b = 0) {
+function lastIndexOf(arr, val, b = arr.length - 1) {
     if (b  > arr.length - 1) {
-        b = arr.length - 1
+        b = arr.length 
     }
 for (var i =b; i >= 0; i--) {
     if (arr[i] === val) {
@@ -33,6 +33,7 @@ function includes(arr, val) {
 return false
 }
 
+console.log(lastIndexOf([1, 2, 3, 4, 5, 4, 3, 2, 1], 2))
 //console.log(lastIndexOf([t, 0, 0, t], t, 2))
 // console.log(indexOf(['b', 'arr', ' a', 'arr', ], 'arr'))
 // console.log(indexOf(['b', 'arr', ' a', 'arr', ], 'arr', 2))
