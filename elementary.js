@@ -1,4 +1,9 @@
-const multiply = (a, b) =>  a/(1/b)
+function multiply  (a,b ){
+    for (var i=0; i <b; i+=b) {
+        a += a
+    }
+    return a
+}
 
 
 function divide (a,b) {
@@ -13,5 +18,11 @@ function divide (a,b) {
 
 
 function modulo(a,b){
-    return a - Math.floor(a/b)*b
+ for (var i=a; i >=b; i-=b) {
+        a  =a- b
+    }
+    return a
 }
+
+console.log(modulo(16, 3))
+
