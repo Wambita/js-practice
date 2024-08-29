@@ -31,6 +31,9 @@ function divide (a,b) {
 
 
 function modulo(a,b){
+    if  (b > a) {
+        return 0
+    }
  for (var i=a; i >=b; i-=b) {
         a  =a- b
     }
