@@ -38,12 +38,12 @@ function divide (a, b) {
   return -count
 }
 
-const modulo = (a,b) =>  a - multiply(divide(a,b), b)
+// const modulo = (a,b) =>  a - multiply(divide(a,b), b)
 
-// function modulo(a, b ){
-//     let quotient = divide(a,b)
-//     modulo = a - multiply(quotient,b)
-//     return modulo
-// }
+function modulo(a, b ){
+    let quotient = divide(a,b)
+    mod = a - multiply(quotient,b)
+    return mod
+}
 
 //console.log(modulo(21, 6))
