@@ -22,9 +22,9 @@ const  keepFirstLast = (string)  =>  (string.length <= 4) ? string :  keepFirst(
 
 
 
- console.log(cutFirst('abcdef'))
-console.log(cutLast("taeyon"))
-console.log(cutFirstLast("af"))
-console.log(keepFirst("taeyon"))
-console.log(keepLast("taeyon"))
-console.log(keepFirstLast("taeyon"))
+//  console.log(cutFirst('abcdef'))
+// console.log(cutLast("taeyon"))
+// console.log(cutFirstLast("af"))
+// console.log(keepFirst("taeyon"))
+// console.log(keepLast("taeyon"))
+// console.log(keepFirstLast("taeyon"))
