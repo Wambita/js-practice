@@ -18,21 +18,22 @@ function multiply  (a,b ){
 
 function divide (a,b) {
     let count = 0 ;
-if (a === 0 ){
-    return 0
-} else if (b === 0) {
-    return "Error: Division by zero"
-}
-
-const allneg = (a < 0) === (b <0)
-    if (b > a) {
+    if ((b > a)  || (a === 0) ){
         return 0
     }
+
+ if (b === 0) {
+    return "Error: Division by zero"
+}
+const allneg = (a < 0) === (b <0)
     for (var i=a-1; i >= b; i-=b) {
         a = a - b
         count ++
     }
-    return count
+    if (allneg) {
+        return count 
+    }
+    return -count
 }
 
 
