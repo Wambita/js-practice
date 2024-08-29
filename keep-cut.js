@@ -1,5 +1,5 @@
 //returns the string with the first 2 characters removed.
-const  cutFirst = (string) => string.substring(1, string.length)
+const  cutFirst = (string) => string.substring(2, string.length)
 
 //returns the string with the last 2 characters removed.
 const  cutLast = (string) => string.substring(0, string.length-2)
@@ -20,7 +20,7 @@ function keepFirstLast(string) {
 }
 
 
-// console.log(cutFirst("taeyon"))
+ //console.log(cutFirst('abcdef'))
 // console.log(cutLast("taeyon"))
 // console.log(cutFirstLast("taeyon"))
 // console.log(keepFirst("taeyon"))
