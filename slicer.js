@@ -1,9 +1,16 @@
 function slice (input, start, end = input.length) {
-    if (end  > input.length || end < start) {
+
+    if (end  < 0) {
+        end  = input.length +end 
+    }
+    if (start < 0) {
+        start = input.length + start;
+    }
+    if (end  > input.length) {
         end  = input.length;
     }
 
-    if (start > input.length || start > end || start < 0) {
+    if (start > input.length || start  > end) {
         start = 0
     }
 
@@ -27,3 +34,4 @@ return input
 // console.log(slice([1, 2, 3, 4, 5], 2, 4)); // [3, 4]
 // console.log(slice('Hello, World!', 6, 11)); // 'World!'
 // console.log(slice('abcdef', 2)); // []
+// console.log(slice('abcdef', -2))
