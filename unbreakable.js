@@ -6,7 +6,6 @@ function split(string, sep) {
     //         result.push(string[i])
     // }
     // return result
-}
 
 let word = ''
 let i = 0
