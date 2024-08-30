@@ -62,7 +62,7 @@ function trunc(num){
         intpart += 1
     }
     if (isneg) {
-        return  -intpart+1
+        return  -intpart-1
     }
     return intpart
 }
