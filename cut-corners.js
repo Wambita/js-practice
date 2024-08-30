@@ -44,7 +44,7 @@ let dec = getDectimal(num)
 let result = 0
 result = (num - dec) 
 if (isneg) {
-    return  -result
+    return  -result-1
 }
 return result
 }
