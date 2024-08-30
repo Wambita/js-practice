@@ -1,4 +1,4 @@
-function reverser (s) {
+function reverse (s) {
     let result = Array.isArray(s) ? [] : ''
 
     for (var i=s.length-1; i>=0; i--) {
