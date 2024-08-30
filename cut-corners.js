@@ -50,12 +50,19 @@ return result
 }
 
 function trunc(num){
-    Math.abs(num)
+    let isneg = false
+    if  (num < 0) {
+        num = -num
+        isneg = true
+    }
     let intpart = 0
     //get int part by subtracting repeatedly
     while (num >= 1) {
         num -= 1
         intpart += 1
+    }
+    if (isneg) {
+        return  -intpart+1
     }
     return intpart
 }
@@ -71,11 +78,11 @@ while (num >= 1) {
 return num
 }
 
-// console.log(floor(3, ))
-// console.log(floor(-4))
-// console.log(floor( 2))
-// console.log(floor(-3))
-// console.log(floor(0))
+// console.log(trunc(3, ))
+// console.log(trunc(-4))
+// console.log(trunc( 2))
+// console.log(trunc(-3))
+// console.log(trunc(0))
 
 
 
