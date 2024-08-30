@@ -28,7 +28,7 @@ function trunc(num){
 return  num  >= 0  ? getIntPart(num) : -getIntPart(-num)
 }
 
-function getIntegerPart(num) {
+function getIntPart(num) {
     let sign = num >= 0 ? 1 : -1
     num = Math.abs(num)
     var res = 0
