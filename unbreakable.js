@@ -1,18 +1,18 @@
 function split(string, sep) {
     const result = []
 
-    if (sep === ' '){
-        for (let i = 0; i < string.length; i++) {
-            result.push(string[i])
-    }
-    return result
+    // if (sep === ''){
+    //     for (let i = 0; i < string.length; i++) {
+    //         result.push(string[i])
+    // }
+    // return result
 }
 
 let word = ''
 let i = 0
 
 while(i < string.length) {
-    if (string.slice(i, i+sep.length) === sep) {
+    if (string.slice(i, i+sep.length) === sep && sep.length > 0) {
         result.push(word)
         word = ''
         i += sep.length
