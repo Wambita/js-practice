@@ -29,7 +29,7 @@ let dec = getDectimal(num)
 let result = 0
 result = (num - dec) + 1
 if (isneg) {
-    result = -result
+    return  -result+1
 }
 return result
 }
@@ -44,7 +44,7 @@ let dec = getDectimal(num)
 let result = 0
 result = (num - dec) 
 if (isneg) {
-    result = -result
+    return  -result
 }
 return result
 }
@@ -71,7 +71,15 @@ while (num >= 1) {
 return num
 }
 
-// console.log (getDectimal(0.1234))
+// console.log(floor(3, ))
+// console.log(floor(-4))
+// console.log(floor( 2))
+// console.log(floor(-3))
+// console.log(floor(0))
+
+
+
+//console.log (ceil(-3.7))
 // console.log (getDectimal(4.1))
 // console.log (round(1234.56))
 // console.log (round(-4.1))
