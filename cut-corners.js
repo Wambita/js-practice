@@ -1,77 +1,34 @@
 function round(num){
-    let isneg = false
-    if  (num < 0) {
-        num = -num
-        isneg = true
-    }
-let dec = getDectimal(num)
-let result = 0
-if (dec < 0.5) {
-    result = num - dec
-}
-if (dec >= 0.5) {
-    result = num - dec + 1
-}
-if (isneg) {
-    result = -result
-}
-return result
+    const intpart = getIntPart(num)
+    const dec = num - intpart
+
+    if (Math.abs(dec) >= 0.5){
+        return intpart + 1
+    } 
+        return intpart
 }
 
 
 function ceil (num){
-    if (num === 0 ) {
-        return 0
+    if (num >= 0) {
+        const intpart = getIntPart(num)
+        return  num > intpart ?  intpart +1 : intpart
+    } else {
+        return -getIntPart(-num)
     }
-    let isneg = false
-    if  (num < 0) {
-        num = -num
-        isneg = true
     }
-let dec = getDectimal(num)
-let result = 0
-result = (num - dec) + 1
-if (isneg) {
-    return  -result+1
-}
-return result
-}
+   
 
 function floor(num){
-    let isneg = false
-    if  (num < 0) {
-        num = -num
-        isneg = true
-    }
-let dec = getDectimal(num)
-let result = 0
-result = (num - dec) 
-if (isneg) {
-    return  -result-1
-}
-return result
+   const intpart = getIntPart(num)
+   return num < intpart ? intpart -1 : intpart
 }
 
 function trunc(num){
-    let isneg = false
-    if  (num < 0) {
-        num = -num
-        isneg = true
-    }
-    let intpart = 0
-    //get int part by subtracting repeatedly
-    while (num >= 1) {
-        num -= 1
-        intpart += 1
-    }
-    if (isneg) {
-        intpart -1
-        return  -intpart
-    }
-    return intpart
+return  num  >= 0  ? getIntPart(num) : -getIntPart(-num)
 }
 
-function getDectimal(num)  {
+function getInt(num)  {
  Math.abs(num)
 let intpart = 0
 //get int part by subtracting repeatedly
@@ -79,7 +36,7 @@ while (num >= 1) {
     num -= 1
     intpart += 1
 }
-return num
+return intpart
 }
 
 // console.log(trunc(3, ))
