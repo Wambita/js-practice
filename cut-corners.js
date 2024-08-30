@@ -28,16 +28,23 @@ function trunc(num){
 return  num  >= 0  ? getIntPart(num) : -getIntPart(-num)
 }
 
-function getIntPart(num)  {
- Math.abs(num)
-let intpart = 0
-//get int part by subtracting repeatedly
-while (num >= 1) {
-    num -= 1
-    intpart += 1
-}
-return intpart
-}
+function getIntegerPart(num) {
+    let sign = num >= 0 ? 1 : -1
+    num = Math.abs(num)
+    var res = 0
+    var pla = 1
+    while(pla <= num){
+        pla *= 10
+    }
+    pla /= 10
+    while(pla >= 1){
+       while(res + pla <= num){
+        res += pla
+       }
+       pla /= 10
+    }
+    return res * sign
+  }
 
 // console.log(trunc(3, ))
 // console.log(trunc(-4))
