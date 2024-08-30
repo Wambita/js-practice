@@ -12,14 +12,13 @@ let word = ''
 let i = 0
 
 while(i < string.length) {
-    if (string.slice(i, i+sep.length) === sep && sep.length > 0) {
+    if (string.slice(i, i+sep.length) === sep) {
         result.push(word)
         word = ''
         i += sep.length
     } else {
         word += string[i]
-        i++
-    
+        i++   
 }
 }
 result.push(word)
