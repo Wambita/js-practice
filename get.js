@@ -3,7 +3,10 @@ function get(src, path) {
     let res = src 
 
     for (let i = 0; i < path.length; i++) {
-        res = res[path[i]]
+        if (res === undefined || res === null  ) {
+        return undefined
     }
-    return res ? res : undefined
+    res = res[path[i]]
+}
+return res
 }
