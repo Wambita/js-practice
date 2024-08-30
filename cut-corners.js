@@ -28,7 +28,7 @@ function trunc(num){
 return  num  >= 0  ? getIntPart(num) : -getIntPart(-num)
 }
 
-function getInt(num)  {
+function getIntPart(num)  {
  Math.abs(num)
 let intpart = 0
 //get int part by subtracting repeatedly
