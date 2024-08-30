@@ -2,7 +2,7 @@ function split(string, sep) {
     const result = []
 
     if (sep === ' '){
-        for (var i = 0; i < string.length; i++) {
+        for (let i = 0; i < string.length; i++) {
             result.push(string[i])
     }
     return result
