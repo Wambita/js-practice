@@ -3,7 +3,7 @@ function round(num){
     const dec = num - intpart
 
     if (Math.abs(dec) >= 0.5){
-        return intpart + 1
+        return intpart + (num >= 0  ? 1 : -1)
     } 
         return intpart
 }
