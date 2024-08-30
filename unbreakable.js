@@ -1,17 +1,18 @@
 function split(string, sep) {
     const result = []
 
-    if (sep === ''){
+    if (sep  === ''){
         for (let i = 0; i < string.length; i++) {
             result.push(string[i])
     }
     return result
     }
+
 let word = ''
 let i = 0
 
 while(i < string.length) {
-    if (string.slice(i, i+sep.length) === sep && sep.length > 0) {
+    if (string.slice(i, i + sep.length) === sep && sep.length > 0) {
         result.push(word)
         word = ''
         i += sep.length
@@ -27,7 +28,7 @@ return result
 function join(arr, sep) {
     let result = ''
     for (var i = 0; i < arr.length; i++) {
-        if (i>0){
+        if (i > 0){
             result += sep
         }
         result += arr[i]
