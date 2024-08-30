@@ -20,7 +20,9 @@ return result
 
 
 function ceil (num){
-    if (num == 0) return 0
+    if (num === 0 ) {
+        return 0
+    }
     let isneg = false
     if  (num < 0) {
         num = -num
