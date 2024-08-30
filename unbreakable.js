@@ -26,6 +26,17 @@ result.push(word)
 return result
 }
 
+function join(arr, sep) {
+    let result = ''
+    for (var i = 0; i < arr.length; i++) {
+        if (i>0){
+            result += sep
+        }
+        result += arr[i]
+    }
+    return result;
+}
+
 
 //   console.log(split('hello world', ' ')); // ['hello', 'world']
 //   console.log(join(['hello', 'world'], ' ')); // 'hello world'
