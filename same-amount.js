@@ -9,7 +9,7 @@ function sameAmount(str, regex1, regex2) {
 }
 
 
-// const data = `qqqqqqq q qqqqqqqfsqqqqq q qq  qw w wq wqw  wqw
+// const word = `qqqqqqq q qqqqqqqfsqqqqq q qq  qw w wq wqw  wqw
 //  ijnjjnfapsdbjnkfsdiqw klfsdjn fs fsdnjnkfsdjnk sfdjn fsp fd`
 // console.log(sameAmount('12345', /[54321]/g, /[12345]/g))
 // console.log(sameAmount(data, /qqqq /, /qqqqqqq/))
