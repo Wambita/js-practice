@@ -3,8 +3,8 @@ function sameAmount(str, regex1, regex2) {
     RegEx1 = new RegExp(regex1,"g");
     RegEx2 = new RegExp(regex2,"g");
 
-    const match1 = str.match(RegEx1);
-    const match2 = str.match(RegEx2);
+    const match1 = str.match(regex1);
+    const match2 = str.match(regex2);
     return match1.length === match2.length;
 }
 
