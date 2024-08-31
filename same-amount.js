@@ -1,7 +1,7 @@
 //same amount that takes three arguments: a string, and 2 regular expressions. Your function should return a boolean.
 function sameAmount(str, regex1, regex2) {
-    RegEx1 = new RegExp(regex1,"g");
-    RegEx2 = new RegExp(regex2,"g");
+    regex1 = new RegExp(regex1,"g");
+    regex2 = new RegExp(regex2,"g");
 
     const match1 = str.match(regex1);
     const match2 = str.match(regex2);
