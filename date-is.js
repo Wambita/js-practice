@@ -36,6 +36,6 @@ function isFuture(date){
 //isPast: accepts a Date, and returns true if the Date is valid, and is before the present date.
 function isPast(date){
     const d = date instanceof Date? date : new Date(date)
-    return isValid(d) && isBefore(d, new Date())
+    return isValid(d) && d.getTime() < Date.now()
 }
 //console.log(isPast('2020-01-01')); // true,
