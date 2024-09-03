@@ -43,3 +43,4 @@ function isPast(date){
     const d = date instanceof Date ? date : new Date(date)
     return isValid(d) && isBefore(d, new Date())
 }
+//console.log(isPast('2020-01-01')); // true,
