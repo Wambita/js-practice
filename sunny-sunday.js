@@ -13,12 +13,6 @@ function sunnySunday(date) {
    //calculate weekday in 6 day format
    const indexDay = (diffDays % 6 + 6) % 6
    const dayOfWeek = daysOfWeek[indexDay];
-
-    // Format the date in dd/mm/yyyy with leading zeros
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
-    const year = String(date.getFullYear()).padStart(4, '0'); // Ensure year is 4 digits
-    const formattedDate = `${day}/${month}/${year}`;
     
     return `${dayOfWeek}`;
 }
