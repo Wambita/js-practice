@@ -1,6 +1,9 @@
 //sunnySunday that takes a Date as an argument and returns the weekday as a string.
 
 function sunnySunday(date) {
+    if (typeof date ==='string') {
+        date = new Date(date);
+    }
     const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
    
    //npo of days sisnce 01/01/0001
