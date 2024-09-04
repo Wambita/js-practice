@@ -29,10 +29,11 @@ function format(date, format) {
     }
 
     //replace the format in the string
-    return format.replace(/([yGgMEdHhmsa]){1,4}/g, match  => {
+    return format.replace(/(yyyy|y|GGGG|G|MMMM|MMM|MM|M|dd|d|EEEE|E|hh|h|HH|H|mm|m|ss|s|a)/g, match  => {
         return formatMap[match] ? formatMap[match]() : match
     })
 }
 
 //const d = new Date('7 January 1985, 3:08:19')
 //console.log(format(d, 'HH(mm)ss [dd] <MMM>'))
+//console.log((format(eclipse, 'y')))
