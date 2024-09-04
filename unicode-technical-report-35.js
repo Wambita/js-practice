@@ -1,6 +1,9 @@
 //format which accepts a valid Date and a format string. Your function should return a correctly formatted string.
 function format(date, format) {
     //define a map of format strings
+    if (typeof date ==='string') {
+        date = new Date(date)
+    }
 
     const formatMap = {
         'y': () => date.getFullYear() %100, //last two digits
