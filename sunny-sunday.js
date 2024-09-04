@@ -5,12 +5,15 @@ function sunnySunday(date) {
    
    //npo of days sisnce 01/01/0001
    const baseDate = new Date('0001-01-01');
-   const diffDays = Math.floor((date - baseDate) / (1000 * 60 * 60 * 24))
+   const diffTime = date - baseDate
+   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24))
    
    //calculate weekday in 6 day format
    const indexDay = (diffDays % 6 + 6) % 6
+
    const dayOfWeek = daysOfWeek[indexDay];
    return `Today is ${dayOfWeek}`
 }
 
 //console.log(sunnySunday(new Date('2022-01-01'))); // sat
+//console.log(sunnySunday(new Date('0001-01-01'))); // Output: 'Today is Monday'
