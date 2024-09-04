@@ -85,13 +85,9 @@ function tempForecasts(arr) {
         const tempInCelsius = fahrenheitToCelsiusFormula(parseInt(trimmedTemp));
 
         // Format the final string
-        return `${tempInCelsius} in ${cities[index]}, ${states[index]}`;
+        return `${tempInCelsius}elsius in ${cities[index]}, ${states[index]}`;
     });
 }
-
-
-
-
 // console.log(tempForecasts([
 //     {
 //       city: 'Pasadena',
@@ -99,5 +95,6 @@ function tempForecasts(arr) {
 //       state: 'california',
 //       region: 'West',
 //     },
-//   ]) )// -> ['38°Celsius in Pasadena, California']
-// //usage
+//   ]) // -> ['38°Celsius in Pasadena, California']
+//   )
+
