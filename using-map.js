@@ -51,13 +51,14 @@ return String(Math.floor((num - 32) *(5/9)))+'°C'
 //trimTemp: accepts an array of objects, and returns a new array of objects with the same structure. The temperature strings must have their spaces removed in the new array.
 
 function trimTemp(arr){
- const trimArr = arr.map(obj => ({
-    city:obj.city,
-    state: obj.state,  
-    region: obj.region,
-    temperature: obj.temperature.replace(/^\s+|\s$/gm, '').replace(/\s+g/, '')
- }))
- return trimArr
+ return arr.map(obj => {
+    const trimmedTemp = obj.temperature.replace(/\s+/g, '')
+
+    return {
+        ...obj,
+        temperature: trimmedTemp,
+    }
+ })
 }
 //usage 
 // console.log(trimTemp([
@@ -75,6 +76,7 @@ function tempForecasts(arr) {
     // Extract city names and state names from the array
     const cities = citiesOnly(arr);
     const states = upperCasingStates(arr.map(obj => obj.state));
+    const temp = fahrenheitToCelsius(arr)
 
     // Map over the array to create the formatted strings
     return arr.map((obj, index) => {
