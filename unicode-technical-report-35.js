@@ -8,7 +8,7 @@ function format(date, format) {
         'y': () =>Math.abs(date.getFullYear()), //last two digits
         'yyyy': () =>String(Math.abs(date.getFullYear())).padStart(4,0), //full year
         'G': () => date.getUTCFullYear() < 0 ? 'BC' : 'AD', //year type
-        'GGGG': () => date.getUTCFullYear() < 0, //bc
+        'GGGG': () => date.getUTCFullYear() < 0 ? 'Before Christ' : 'Anno Domini', //bc
         'M' : () => date.getMonth() + 1, //month1 to 12
         'MM': () => String(date.getMonth()+1).padStart(2, '0'), //short
         'MMM' : () => date.toLocaleString('default', {month: 'short'}),
