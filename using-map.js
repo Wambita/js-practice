@@ -31,6 +31,7 @@ function capWords(str){
 }
 
 //example
+console.log(upperCasingStates)
 //console.log(upperCasingStates(['alabama', 'new jersey']) )// -> ['Alabama', 'New Jersey'])
 
 //fahrenheitToCelsius: accepts an array of fahrenheit temperatures as strings, and returns an array of strings converted to celsius. Round down the result.
@@ -52,6 +53,8 @@ return String(Math.floor((num - 32) *(5/9)))+'°C'
 function trimTemp(arr){
  const trimArr = arr.map(obj => ({
     city:obj.city,
+    state: obj.state,  
+    region: obj.region,
     temperature: obj.temperature.replace(/^\s+|\s$/gm, '').replace(/\s+g/, '')
  }))
  return trimArr
