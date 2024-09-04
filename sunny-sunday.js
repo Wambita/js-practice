@@ -20,7 +20,7 @@ function sunnySunday(date) {
     const year = String(date.getFullYear()).padStart(4, '0'); // Ensure year is 4 digits
     const formattedDate = `${day}/${month}/${year}`;
     
-    return `${formattedDate} is a ${dayOfWeek}`;
+    return `${dayOfWeek}`;
 }
 
 //console.log(sunnySunday(new Date('2022-01-01'))); // sat
