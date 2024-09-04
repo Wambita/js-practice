@@ -1,7 +1,7 @@
 //adder: accepts an array of numbers, and returns the sum as a number.
 function adder(arr) {
     const initialVal = 0
-    sum = arr.reduce(( acc,  current) => acc+ current , initialVal )
+  const sum = arr.reduce(( acc,  current) => acc+ current , initialVal )
     return sum
 }
 
