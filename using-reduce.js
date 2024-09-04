@@ -8,8 +8,8 @@ function adder(arr, additional =0) {
 //sumOrMul: accepts an array of numbers and adds or multiplies its elements depending on whether the element is odd or even. Even = multiply. Odd = add.
 function sumOrMul(arr, additional = 0) {
     const initialVal = additional || arr[0] % 2 === 0? 1 : 0
-    sumOrMul = arr.reduce((acc,  current) => (current % 2 === 0? acc * current : acc + current), initialVal )
-    return sumOrMul
+    sumOrMult = arr.reduce((acc,  current) => (current % 2 === 0? acc * current : acc + current), initialVal )
+    return sumOrMult
 }
 
 //funcExec: accepts an array of functions and executes them using reduce, returning the result.
