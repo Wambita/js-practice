@@ -5,7 +5,7 @@ function format(date, format) {
     }
 
     const formatMap = {
-        'y': () =>Math.abs(date.getFullYear()) %1000, //last two digits
+        'y': () =>Math.abs(date.getFullYear()), //last two digits
         'yyyy': () =>String(Math.abs(date.getFullYear())).padStart(4,0), //full year
         'G': () => date.getUTCFullYear() < 0 ? 'BC' : 'AD', //year type
         'GGGG': () => date.getUTCFullYear() < 0, //bc
