@@ -19,15 +19,19 @@ return city
 
 //upperCasingStates: accepts an array of strings, and returns a new array of strings. The returned array will be the same as the argument, except the first letter of every word must be capitalized.
 function upperCasingStates(arr){
-    let upp = arr.map((state) => capitalize(state))
+    let upp = arr.map((state) => capWords(state))
     return upp
 }
 function capitalize(str){
-    return  str.charAt(0).toUpperCase() + str.slice(1)
+    return  str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+}
+//multiple words separated
+function capWords(str){
+    return str.split(' ').map(word => capitalize(word)).join(' ')
 }
 
 //example
-//console.log(upperCasingStates(['alabama', 'new jersey']) // -> ['Alabama', 'New Jersey'])
+//console.log(upperCasingStates(['alabama', 'new jersey']) )// -> ['Alabama', 'New Jersey'])
 
 //fahrenheitToCelsius: accepts an array of fahrenheit temperatures as strings, and returns an array of strings converted to celsius. Round down the result.
 
