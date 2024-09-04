@@ -79,7 +79,7 @@ function tempForecasts(arr) {
     // Map over the array to create the formatted strings
     return arr.map((obj, index) => {
         // Trim and convert temperature
-        const trimmedTemp = obj.temperature.replace(/^\s+|\s+$/g, '').replace(/\s+/g, '');
+        const trimmedTemp =  obj.temperature.replace(/^\s+|\s$/gm, '').replace(/\s+g/, '')
         const tempInCelsius = fahrenheitToCelsiusFormula(parseInt(trimmedTemp));
 
         // Format the final string
