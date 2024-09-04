@@ -18,7 +18,6 @@ function capWords(str){
     return str.split(' ').map(word => capitalize(word)).join(' ')
 }
 
-
 //fahrenheitToCelsius: accepts an array of fahrenheit temperatures as strings, and returns an array of strings converted to celsius. Round down the result.
 function fahrenheitToCelsius(arr){
     //formula (f -32) * 5/9
@@ -47,12 +46,11 @@ function tempForecasts(arr) {
     // Extract city names and state names from the array
     const cities = citiesOnly(arr);
     const states = upperCasingStates(arr.map(obj => obj.state));
-    const temp = fahrenheitToCelsius(arr)
 
     // Map over the array to create the formatted strings
     return arr.map((obj, index) => {
         // Trim and convert temperature
-        const trimmedTemp =  obj.temperature.replace(/^\s+|\s$/gm, '').replace(/\s+g/, '')
+        const trimmedTemp =  obj.temperature.replace(/\s+g/, '')
         const tempInCelsius = fahrenheitToCelsiusFormula(parseInt(trimmedTemp));
 
         // Format the final string
