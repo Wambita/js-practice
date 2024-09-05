@@ -3,7 +3,6 @@ function forEach(arr, func) {
     for (let i = 0; i < arr.length; i++) {
         func(arr[i], i, arr);
     }
-    return arr;
 }
 //example usage
 //forEach([1, 2, 3, 4], (num) => console.log(num)); // logs: 1, 2, 3, 4
