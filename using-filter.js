@@ -10,7 +10,10 @@ function filterStartVowel(arr){
 
 //filter5Vowels: accepts an array of strings, and returns only those which contain at least 5 of any vowels (a,e,i,o,u).
 function filter5Vowels(arr){
-    return arr.filter(name => name.toLowerCase().split('').filter(char => ['a', 'e', 'i', 'o', 'u'].includes(char)).length >= 5)
+    return arr.filter(name => 
+        name.toLowerCase().split('').filter
+        (char => ['a', 'e', 'i', 'o', 'u']
+        .includes(char)).length >= 5)
 }
 
 //filter1DistinctVowel: accepts an array of strings, and returns only those which contain only one distinct vowel (a,e,i,o,u). For example, "Alabama" contains only 1 distinct vowel "a".
