@@ -6,4 +6,4 @@ function forEach(arr, func) {
     return arr;
 }
 //example usage
-f//orEach([1, 2, 3, 4], (num) => console.log(num)); // logs: 1, 2, 3, 4
+//forEach([1, 2, 3, 4], (num) => console.log(num)); // logs: 1, 2, 3, 4
