@@ -1,5 +1,5 @@
 //getArchitects: find all  a tags and check those with class architects and non architects
-export const getArchitects = () =>[document.querySelector("body a"),
+export const getArchitects = () =>[document.querySelectorAll("body a"),
 document.querySelector("body span")]
 
 //getClassical : filters the architects further to find those in the classical class and those who arent
@@ -11,5 +11,5 @@ export const getActive = () => [document.querySelectorAll("a.classical.active"),
 document.querySelectorAll("a.classical:not(.active)")]
 
 //getBonannoPisano identifies specific  archiect by their id and retrns all the remaining active classbcal architects
-export const getBonannoPisano = () => [document.querySelectorAll("#BonannoPisano"),
+export const getBonannoPisano = () => [document.querySelector("#BonannoPisano"),
 document.querySelectorAll("a.classical.active)")]
