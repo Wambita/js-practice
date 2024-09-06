@@ -29,10 +29,10 @@ export function  pimp (){
         }
     } else {
         // Remove the classes in reverse order (LIFO).
-        button.classList.remove(styles[totalStyles - index - 1]);
+        button.classList.remove(styles[ttlStyles - index - 1]);
 
         // When all classes have been removed, start adding them again.
-        if (index === totalStyles - 1) {
+        if (index === ttlStyles - 1) {
             adding = true;
             button.classList.remove('unpimp'); // Toggle 'unpimp' off when done removing
         }
