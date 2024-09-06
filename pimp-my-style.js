@@ -1,45 +1,44 @@
-//pimp function adds and removes classes bases on clicks and toggling the unpim class at appropriate times
-
+// Import the styles array from the provided data file
 import { styles } from './pimp-my-style.data.js';
 
-//select the button elem from the html 
-const button = document.querySelector('.button')
+// Select the button element from the HTML
+const button = document.querySelector('.button');
 
-//initailize a counter to track no of clicks
-let clickCount = 0
-let adding = true
+// Initialize a variable to track the current index in the styles array
+let currentIndex = 0;
+let addingClasses = true; // Tracks if we are adding or removing classes
 
-//func to add / remove styles from the button
-export function  pimp (){
-    //get styles in the array
-    const ttlStyles = styles.length
+// Function to handle the "pimp" logic
+function pimp() {
+    // If we are in the process of adding classes
+    if (addingClasses) {
+        // Add the current style to the button's class list
+        button.classList.add(styles[currentIndex]);
 
-    //calculate current index based on the click counter
-    const index = clickCount % ttlStyles
+        // Move to the next class in the array
+        currentIndex++;
 
-    //add styles 
-    if (adding) {
-        // Add the next class in the styles array.
-        button.classList.add(styles[index]);
-
-        // If we've added all classes, start removing them on the next click.
-        if (index === totalStyles - 1) {
-            adding = false;
-            button.classList.add('unpimp'); // Toggle 'unpimp' on when done adding
+        // If we've reached the end of the styles array, start removing classes
+        if (currentIndex === styles.length) {
+            addingClasses = false;
+            button.classList.add('unpimp'); // Toggle 'unpimp' on
         }
-    } else {
-        // Remove the classes in reverse order (LIFO).
-        button.classList.remove(styles[ttlStyles - index - 1]);
+    } 
+    // If we are in the process of removing classes
+    else {
+        // Decrease the currentIndex to remove classes in reverse order
+        currentIndex--;
 
-        // When all classes have been removed, start adding them again.
-        if (index === ttlStyles - 1) {
-            adding = true;
-            button.classList.remove('unpimp'); // Toggle 'unpimp' off when done removing
+        // Remove the last class from the button's class list
+        button.classList.remove(styles[currentIndex]);
+
+        // If all classes have been removed, switch back to adding mode
+        if (currentIndex === 0) {
+            addingClasses = true;
+            button.classList.remove('unpimp'); // Toggle 'unpimp' off
         }
     }
-    // Increment the clickCounter for the next click.
-    clickCounter++;
 }
 
-// Attach the function to the button's click event.
+// Add the click event listener to the button to trigger the pimp function
 document.addEventListener('click', pimp);
