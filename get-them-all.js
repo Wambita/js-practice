@@ -1,6 +1,6 @@
 //getArchitects: find all  a tags and check those with class architects and non architects
 export const getArchitects = () =>[document.querySelectorAll("body a"),
-document.querySelector("body span")]
+document.querySelectorAll("body span")]
 
 //getClassical : filters the architects further to find those in the classical class and those who arent
 export const getClassical = () =>[document.querySelectorAll("a.classical"), 
