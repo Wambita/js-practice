@@ -12,4 +12,4 @@ document.querySelectorAll("a.classical:not(.active)")]
 
 //getBonannoPisano identifies specific  archiect by their id and retrns all the remaining active classbcal architects
 export const getBonannoPisano = () => [document.querySelector("#BonannoPisano"),
-document.querySelectorAll("a.classical.active)")]
+document.querySelectorAll("a.classical.active")]
