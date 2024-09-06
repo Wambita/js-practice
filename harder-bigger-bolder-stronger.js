@@ -19,7 +19,7 @@
         letterDiv.textContent = randomLetter
 
         //set random font size between min and max
-       const fontSize =minFontSize + (maxFontSize - minFontSize) * (i/ttlLetters)
+       const fontSize =Math.random() *(maxFontSize - minFontSize) + minFontSize
        letterDiv.style.fontSize = `${fontSize}px`
 
         //set random font weight
