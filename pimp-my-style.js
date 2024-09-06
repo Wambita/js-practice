@@ -1,7 +1,5 @@
 //pimp function adds and removes classes bases on clicks and toggling the unpim class at appropriate times
 
-import {styles} from  '/pimp-my-style.data.js'
-
 //select the button elem from the html 
 const button = document.querySelector('.button')
 
