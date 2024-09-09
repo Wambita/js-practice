@@ -1,6 +1,7 @@
 // Import the styles array from the provided data file
 import { styles } from './pimp-my-style.data.js';
 let count  = 0
+
 export function pimp() {
 const button = document.querySelector(".button")
     if (!button.classList.contains("unpimp")) {
@@ -11,7 +12,6 @@ const button = document.querySelector(".button")
 
         // If we've reached the end of the styles array, start removing classes
         if (count=== styles.length) {
-            addingClasses = false;
             button.classList.add('unpimp'); // Toggle 'unpimp' on
         }
     }  else {
