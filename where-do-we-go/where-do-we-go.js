@@ -45,6 +45,7 @@ function  selectPlace(){
     const sectionHeight = window.innerHeight
     const scroll = window.scrollY + sectionHeight/2
     const sectionIndex = Math.floor(scroll/ sectionHeight)
+    const place = places[sectionIndex]
     location.textContent =  `${place.name}\n${place.coordinates}`
     location.href = `https://www.google.com/maps/place/${urlEncodeCoordinates(place.coordinates)}`
 
