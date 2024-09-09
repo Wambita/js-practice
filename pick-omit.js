@@ -3,7 +3,7 @@
 
 //   pick: contains only those keys which appear in the string or array of strings.
 function  pick(obj, str){
-    newObj = {}
+    const newObj = {}
 
     //convert string to array if not array
    if(!Array.isArray(str)){
