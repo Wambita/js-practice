@@ -1,4 +1,4 @@
-import  {colors} from  './fifty-shades-of-cold.data.js'
+import  { colors } from  './fifty-shades-of-cold.data.js'
 
 /*generateClasses function. It creates a <style> tag inside the <head>. 
 It should generate one class for each color in the colors array, 
