@@ -8,7 +8,7 @@ which sets the background attribute like so:
 }
 */
 export function generateClasses() {
-    const head =  document.getElementByTagName("head")[0]
+    const head =  document.getElementsByTagName("head")[0]
     const  style = document.createElement("style")
     colors.forEach((color) =>{
         style.innerHTML += `.${color} { background: ${color} }`
