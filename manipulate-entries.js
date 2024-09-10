@@ -52,14 +52,13 @@ function lowCarbs(cart) {
 function cartTotal(cart) {
     return reduceEntries(cart, (acc, [key, grams]) => {
         const itemNut = nutritionDB[key];
+        if(!itemNut) return acc
 
         // Calculate nutritional values based on grams
-        const nutritionalValues = mapEntries(itemNut, ([nutrient, value]) => {
+       acc[key]= mapEntries(itemNut, ([nutrient, value]) => {
             return [nutrient, Math.round(value * (grams / 100)*10)/10];
         });
 
-        // Merge the calculated values into the accumulator
-        acc[key] = nutritionalValues;
         return acc;
     }, {});
 }
