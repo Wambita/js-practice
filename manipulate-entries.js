@@ -32,11 +32,12 @@ function mapEntries(obj, func){
 //   }
 
 function totalCalories(cart) {
-    return reduceEntries(cart, (acc, [key, grams]) => {
+ const total = reduceEntries(cart, (acc, [key, grams]) => {
         const itemNut = nutritionDB[key];
        if(!itemNut) return acc
-    return Math.round(acc + itemNut.calories * (grams /100)*10)/10
+    return acc + itemNut.calories * (grams /100)
     }, 0)
+    return Math.round(total * 10)/10
 }
 
 function lowCarbs(cart) {
