@@ -60,7 +60,7 @@ function cartTotal(cart) {
 
         // Calculate nutritional values based on grams
        acc[key]= mapEntries(itemNut, ([nutrient, value]) => {
-            return [nutrient, roundToDecimal(value * (grams / 100)];
+            return [nutrient, roundToDecimal(value * (grams / 100))];
         });
 
         return acc;
