@@ -49,8 +49,8 @@ function lowCarbs(cart) {
     })
 }
 
-function roundToDecimal(value, decimals = 1) {
-    return parseFloat(value * Math.pow(10, decimals)) / Math.pow(10, decimals);
+function roundToDecimal(value, decimals = 2) {
+    return parseFloat(value.toFixed(decimals));
 }
 
 function cartTotal(cart) {
