@@ -49,6 +49,10 @@ function lowCarbs(cart) {
     })
 }
 
+function roundToDecimal(value, decimals = 1) {
+    return Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals);
+}
+
 function cartTotal(cart) {
     return reduceEntries(cart, (acc, [key, grams]) => {
         const itemNut = nutritionDB[key];
@@ -56,7 +60,7 @@ function cartTotal(cart) {
 
         // Calculate nutritional values based on grams
        acc[key]= mapEntries(itemNut, ([nutrient, value]) => {
-            return [nutrient, Math.round(value * (grams / 100)*10)/10];
+            return [nutrient, roundToDecimal(value * (grams / 100)];
         });
 
         return acc;
