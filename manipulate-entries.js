@@ -49,9 +49,9 @@ function lowCarbs(cart) {
     })
 }
 
-function roundToDecimal(value, decimals = 1) {
-    return Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals);
-}
+// function roundToDecimal(value, decimals = 1) {
+//     return Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals);
+// }
 
 function cartTotal(cart) {
     return reduceEntries(cart, (acc, [key, grams]) => {
@@ -60,7 +60,7 @@ function cartTotal(cart) {
 
         // Calculate nutritional values based on grams
        acc[key]= mapEntries(itemNut, ([nutrient, value]) => {
-            return [nutrient, roundToDecimal(value * (grams / 100))];
+            return [nutrient, value * (grams / 100)];
         });
 
         return acc;
