@@ -1,22 +1,20 @@
 //reduce function for objects
 function reduceKeys(obj, func, initialVal) {
-const keys = Object.keys(obj)
-let res = initialVal !== undefined ? initialVal :  keys[0]
-const startIndex  = initialVal !== undefined ? i0: 1
-for (let i = startIndex; i < keys.length;i++){
-    res = func(res, keys[i], i, keys)
+let entries = Object.entries(obj)
+let res
+let startIndex = 0
+
+if(initialVal !== undefined) {
+    res = initialVal
+} else {
+    res = entries[0][0]
+    startIndex = 1
 }
-return res
-    }
-    
-    //filter: that works like the [].filter method.
-    function filterKeys(obj, func){
-      const  res = {}
-      for(const [key, value] of Object.entries(obj)){
-        if(func(key, value, obj)){
-            res[key] = value
-        }
-      }
+
+for(let i = startIndex; i < entries.length; i++) {
+    const [key, value] = entries[i]
+    res = func(res, key, value, obj)
+}
         return res
     }
     
