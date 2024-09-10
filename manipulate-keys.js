@@ -27,6 +27,17 @@ for(let i = startIndex; i < entries.length; i++) {
         }
         return res
     }
+
+    //filterKeys
+    function filterKeys(obj, func){
+        const res = {}
+        for(const [key, value] of Object.entries(obj)){
+            if(func(key, value, obj)){
+                res[key] = value
+            }
+        }
+        return res
+    }
     // usage
     // const nutrients = { carbohydrates: 12, protein: 20, fat: 5 }
 
