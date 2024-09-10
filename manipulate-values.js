@@ -1,11 +1,20 @@
 //reduce function for objects
-function reduceValues(obj, func) {
-    let keys = Object.keys(obj)
-    let res = obj[keys[0]]
-    for (var i = 1; i < keys.length; i++) {
-        let key = keys[i]
-        res = func(res, obj[key], i, obj)
-    }
+function reduceValues(obj, func, initialVal) {
+let entries = Object.entries(obj)
+let res
+let startIndex = 0
+
+//if initail val is provses, set it as  the starting accumulator
+if(initialVal !== undefined) {
+    res = initialVal
+} else {
+    res = entries[0][1]
+    startIndex = 1
+}
+for(let i = startIndex; i < entries.length; i++) {
+    const[key, value] = entries[i]
+    res = func(res, value, key, obj)
+}
     return res
 }
 
