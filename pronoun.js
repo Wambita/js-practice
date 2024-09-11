@@ -12,31 +12,39 @@ function pronoun(str){
     // Create an object to store the pronouns information
     const result = {};
   
-    // Iterate through the words
-    for (let i = 0; i < words.length; i++) {
-      let word = words[i];
-  
-      // If the word is a pronoun
-      if (pronouns.includes(word)) {
-        // Initialize the object for the pronoun if not done already
-        if (!result[word]) {
-          result[word] = { word: [], count: 0 };
-        }
-  
-        // Increment the count for the pronoun
-        result[word].count++;
-  
-        // Check if the next word exists and is not a pronoun
-        if (words[i + 1] && !pronouns.includes(words[i + 1])) {
-          result[word].word.push(words[i + 1]);
+    /// Helper function to clean punctuation from a word
+  const cleanWord = (word) => word.replace(/[^\w]/g, '');
+
+  // Iterate through the words
+  for (let i = 0; i < words.length; i++) {
+    let word = words[i];
+
+    // If the word is a pronoun
+    if (pronouns.includes(word)) {
+      // Initialize the object for the pronoun if not done already
+      if (!result[word]) {
+        result[word] = { word: [], count: 0 };
+      }
+
+      // Increment the count for the pronoun
+      result[word].count++;
+
+      // Check if the next word exists
+      if (words[i + 1]) {
+        // Clean punctuation from the next word
+        const nextWord = cleanWord(words[i + 1]);
+        if (nextWord && !pronouns.includes(nextWord)) {
+          result[word].word.push(nextWord);
         }
       }
     }
-  
-    return result;
   }
+
+  return result;
+}
+
   
-//   // Example usage:
+  // Example usage:
 //   const ex1 = 'Using Array Destructuring, you you can iterate through objects easily.';
 //   console.log(pronoun(ex1));
   
