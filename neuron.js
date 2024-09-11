@@ -10,33 +10,37 @@ function neuron(data){
   function formatKey(text){
     return text.toLowerCase().replace(/\s+/g, '_').replace(/[^\w_]/g,'')
   }
-    data.forEach(entry => {
-      const [typePart, responsePart] = entry.split(' - Response: ')
-      let [type, query ] = typePart.split(': ')
-      query = query.trim()
-      const response = responsePart.trim()
+    
+  data.forEach(entry => {
+    const [typePart, responsePart] = entry.split(/ - (Response|Responses): /);
+    let [type, query] = typePart.split(': ');
+    query = query.trim();
 
-      const key = formatKey(query)
-      if (type.toLowerCase() === 'questions'){
-        if(!result.questions[key]){
-          result.questions[key] = {question: query, response: []}
-        }
-        result.questions[key].response.push(response)
-      } else if(type.toLowerCase() ==='orders') {
-        const key = formatKey(query)
-        if(!result.orders[key]){
-          result.orders[key] = {order: query, response: []}
-        }
-        result.orders[key].response.push(response)
+    // Determine if the responsePart contains "Response" or "Responses"
+    const isMultipleResponses = responsePart.startsWith('Responses:');
+    const responses = isMultipleResponses 
+      ? responsePart.replace('Responses: ', '').split(',').map(response => response.trim())
+      : [responsePart.replace('Response: ', '').trim()];
+
+    const key = formatKey(query); // Normalize the query to create the key
+
+    if (type.toLowerCase() === 'questions') {
+      if (!result.questions[key]) {
+        result.questions[key] = { question: query, responses: [] };
       }
-    })
-    return result;
-  }
+      result.questions[key].responses.push(...responses);
+    } else if (type.toLowerCase() === 'orders') {
+      if (!result.orders[key]) {
+        result.orders[key] = { order: query, responses: [] };
+      }
+      result.orders[key].responses.push(...responses);
+    }
+  });
+  return result;
 
+}
 
-
-
-// Example test:
+//Example test:
 // const input = [
 //   'Questions: what is ounces? - Response: Ounce, unit of weight in the avoirdupois system',
 //   'Questions: what is ounces? - Response: equal to 1/16 pound (437 1/2 grains)',
