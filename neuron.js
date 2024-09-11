@@ -34,10 +34,10 @@ data.forEach(entry => {
   return result;
 }
 
-// Example test:
-const input = [
-    'Questions: what is ounces? - Response: Ounce, unit of weight in the avoirdupois system',
-    'Questions: what is ounces? - Response: equal to 1/16 pound (437 1/2 grains)',
-  ];
+// // Example test:
+// const input = [
+//     'Questions: what is ounces? - Response: Ounce, unit of weight in the avoirdupois system',
+//     'Questions: what is ounces? - Response: equal to 1/16 pound (437 1/2 grains)',
+//   ];
   
-  console.log(neuron(input));
+//   console.log(neuron(input));
