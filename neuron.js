@@ -8,7 +8,7 @@ function neuron(data){
   }
 
   function formatKey(text){
-    return text.toLowerCase().replace(/\s+/g, '_').replace(/\?$/,'')
+    return text.toLowerCase().replace(/\s+/g, '_').replace(/[^\w_]/g,'')
   }
     data.forEach(entry => {
       const [typePart, responsePart] = entry.split(' - Response: ')
