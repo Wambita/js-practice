@@ -4,10 +4,13 @@
 function defaultCurry(obj1){
     return(obj2) =>{
         let res = {}
-        for (const  prop in obj2){
-            if(!(prop in obj1)) {
-                res[prop] = obj2[prop]
-            }
+        for (const  prop in obj1){
+                res[prop] = obj2[prop] || obj1[prop]
+        }
+            for (const prop in obj2){
+                if(!(prop in obj1)){
+                    res[prop] = obj2[prop]
+                }
         }
         return res
     }
