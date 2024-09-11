@@ -11,8 +11,12 @@ function neuron(data){
     return text.toLowerCase().replace(/\s+/g, '_').replace(/[^\w_]/g,'')
   }
     
+  
   data.forEach(entry => {
-    const [typePart, responsePart] = entry.split(/ - (Response|Responses|responses|response): /);
+    // Split the entry on the ' - ' and then check for 'Response:' or 'Responses:'
+    const [typePart, responsePart] = entry.split(/ - (Response|Responses): /);
+    if (!typePart || !responsePart) return; // Skip if the format is incorrect
+
     let [type, query] = typePart.split(': ');
     query = query.trim();
 
@@ -31,13 +35,13 @@ function neuron(data){
       result.questions[key].responses.push(...responses);
     } else if (type.toLowerCase() === 'orders') {
       if (!result.orders[key]) {
-        result.orders[key] = { order: query, response: [] };
+        result.orders[key] = { order: query, responses: [] };
       }
       result.orders[key].responses.push(...responses);
     }
   });
-  return result;
 
+  return result;
 }
 
 //Example test:
