@@ -49,11 +49,11 @@ function lowCarbs(cart) {
     })
 }
 
-function roundToDecimal(value, decimals = 1) {
+function roundToDecimal(value, decimals = 3) {
     return parseFloat(value.toFixed(decimals));
 }
 
-function cartTotal(cart) {
+function cartTotal(cart) { 
     return reduceEntries(cart, (acc, [key, grams]) => {
         const itemNut = nutritionDB[key];
         if(!itemNut) return acc
