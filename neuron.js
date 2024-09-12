@@ -1,10 +1,12 @@
 function neuron(data) {
-if (data.length === 0) return
+if (data.length === 0) return{}
 
   const result = {
     questions : {},
     orders: {}
   }
+
+
 
   //helper function to clean and format keys
   function formatKeys(text){
@@ -42,6 +44,8 @@ if (data.length === 0) return
         }
       }
     })
+
+    if (result.length === 0) return{}
     return result
   }
 
