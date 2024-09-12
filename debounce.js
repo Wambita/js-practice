@@ -12,10 +12,10 @@ function debounce(func, delay){
 
 function opDebounce(func, delay, opt){
     var timer = null //track the delay
-    var first = true //flag to track 1st call
+    var first = true//flag to track 1st call
    var  leading  //flag  to  track leading edge behavior
     if(typeof opt === 'object'){
-        leading =!opt.leading // Toggle leading behavior based on the passed options
+        leading = ! !opt.leading // Toggle leading behavior based on the passed options
     }
     return function(){
         var context = this
