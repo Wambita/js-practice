@@ -1,57 +1,53 @@
-//neuron, that enables your AI/bot to learn to mutate data into a more usable shape. You can see how it works from the example.
-function neuron(data){
-  if  (data.length === 0) return{}
-
-  const  result = {
-    questions: {},
+function neuron(data) {
+  const result = {
+    questions : {},
     orders: {}
   }
 
-  function formatKey(text){
-    return text.toLowerCase().replace(/\s+/g, '_').replace(/[^\w_]/g,'')
+  //helper function to clean and format keys
+  function formatKeys(text){
+    return text.toLowerCase().replace(/\s+/g, '_').replace(/\?$/, '')
   }
-    
-  
-  data.forEach(entry => {
-    // Split the entry on the ' - ' and then check for 'Response:' or 'Responses:'
-    const [typePart, responsePart] = entry.split(/ - (Response|Responses): /);
-    if (!typePart || !responsePart) return; // Skip if the format is incorrect
+    //process each entry 
+    data.forEach(entry => {
+      //spli using - 
+      const[queryPart, responsePart] = entry.split(' - ').map(s => s.trim())
 
-    let [type, query] = typePart.split(': ');
-    query = query.trim();
+      //split first part by : to separate type and actual query
+      const[type, query] = queryPart.split(':').map(s => s.trim())
+      const  response = responsePart.replace(/^Response: /i, '').trim()
 
-    // Determine if the responsePart contains "Response" or "Responses"
-    const isMultipleResponses = responsePart.startsWith('Responses:');
-    const responses = isMultipleResponses 
-      ? responsePart.replace('Responses: ', '').split(',').map(response => response.trim())
-      : [responsePart.replace('Response: ', '').trim()];
-
-    const key = formatKey(query); // Normalize the query to create the key
-
-    if (type.toLowerCase() === 'questions') {
-      if (!result.questions[key]) {
-        result.questions[key] = { question: query, responses: [] };
+      //Handle questions
+      if(type.toLowerCase() === 'questions'){
+        const key = formatKeys(query)
+        if(!result.questions[key]){
+          result.questions[key] = {question: query, responses: []}
+        }
+        //add responses if not already present in responses array
+        if(!result.questions[key].responses.includes(response)){
+          result.questions[key].responses.push(response)
+        }
       }
-      result.questions[key].responses.push(...responses);
-    } else if (type.toLowerCase() === 'orders') {
-      if (!result.orders[key]) {
-        result.orders[key] = { order: query, responses: [] };
+      //handle orders
+      else if(type.toLowerCase() === 'orders'){
+        const key = formatKeys(query)
+        if(!result.orders[key]){
+          result.orders[key] = {order: query, responses: []}
+        }
+        //add items if not already present in items array
+        if(!result.orders[key].responses.includes(response)){
+          result.orders[key].responses.push(response)
+        }
       }
-      result.orders[key].responses.push(...responses);
-    }
-  });
+    })
+    return result
+  }
 
-  return result;
-}
-
-//Example test:
 // const input = [
-//   'Questions: what is ounces? - Response: Ounce, unit of weight in the avoirdupois system',
-//   'Questions: what is ounces? - Response: equal to 1/16 pound (437 1/2 grains)',
-//   'Questions: what is Mud dauber - Response: Mud dauber is a name commonly applied to a number of wasps',
-//   'Orders: shutdown! - Response: Yes Sr!',
-//   'Orders: Quote something! - Response: Pursue what catches your heart, not what catches your eyes.'
-// ]
-
-
-//   console.log(neuron(input));
+//     'Questions: what is ounces? - Response: Ounce, unit of weight in the avoirdupois system',
+//     'Questions: what is ounces? - Response: equal to 1/16 pound (437 1/2 grains)',
+//     'Questions: what is Mud dauber - Response: Mud dauber is a name commonly applied to a number of wasps',
+//     'Orders: shutdown! - Response: Yes Sr!',
+//     'Orders: Quote something! - Response: Pursue what catches your heart, not what catches your eyes.'
+//   ]
+//   console.log(JSON.stringify(neuron(input), null, 2));
