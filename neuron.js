@@ -6,8 +6,6 @@ if (data.length === 0) return{}
     orders: {}
   }
 
-
-
   //helper function to clean and format keys
   function formatKeys(text){
     return text.toLowerCase().replace(/\s+/g, '_').replace(/\?$/, '')
@@ -17,8 +15,13 @@ if (data.length === 0) return{}
       //spli using - 
       const[queryPart, responsePart] = entry.split(' - ').map(s => s.trim())
 
+      if (!queryPart || !responsePart) return; // Skip invalid entries
+
       //split first part by : to separate type and actual query
       const[type, query] = queryPart.split(':').map(s => s.trim())
+
+      if (!type || !query) return; // Skip invalid entries
+
       const  response = responsePart.replace(/^Response: /i, '').trim()
 
       //Handle questions
@@ -44,7 +47,17 @@ if (data.length === 0) return{}
         }
       }
     })
-    return result
+
+     // Create the final result based on whether questions or orders have data
+  const finalResult = {};
+  if (Object.keys(result.questions).length > 0) {
+    finalResult.questions = result.questions;
+  }
+  if (Object.keys(result.orders).length > 0) {
+    finalResult.orders = result.orders;
+  }
+
+    return JSON.stringify(finalResult, null, 2);
   }
 
 // const input = [
@@ -54,4 +67,6 @@ if (data.length === 0) return{}
 //     'Orders: shutdown! - Response: Yes Sr!',
 //     'Orders: Quote something! - Response: Pursue what catches your heart, not what catches your eyes.'
 //   ]
-//   console.log(JSON.stringify(neuron(input), null, 2));
+// //   console.log(neuron(input));
+// console.log( neuron(['Orders: shutdown please! - Response: no!'])
+// )
