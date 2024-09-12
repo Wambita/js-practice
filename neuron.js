@@ -44,8 +44,6 @@ if (data.length === 0) return{}
         }
       }
     })
-
-    if (result.length === 0) return{}
     return result
   }
 
