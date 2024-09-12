@@ -1,64 +1,49 @@
+
+"use strict";
+
 function neuron(data) {
-if (data.length === 0) return{}
+    // Initialize an empty object to store the processed results
+    const results = {};
 
-  const result = {
-    questions : {},
-    orders: {}
-  }
+    // Iterate over each sentence in the array
+    data.forEach(sentence => {
+        // Split the sentence into the part before ' - Response: ' and the response part
+        const [firstPart, response] = sentence.split(" - Response: ");
 
-  //helper function to clean and format keys
-  function formatKeys(text){
-    return text.toLowerCase().replace(/\s+/g, '_').replace(/\?$/, '')
-  }
-    //process each entry 
-    data.forEach(entry => {
-      //spli using - 
-      const[queryPart, responsePart] = entry.split(' - ').map(s => s.trim())
+        // Extract the key type (e.g., 'Questions', 'Orders') and convert to lowercase
+        const firstKey = firstPart.slice(0, firstPart.indexOf(":")).toLowerCase();
 
-      if (!queryPart || !responsePart) return; // Skip invalid entries
+        // Extract the statement or description part
+        const firstValue = firstPart.slice(firstPart.indexOf(":") + 2);
 
-      //split first part by : to separate type and actual query
-      const[type, query] = queryPart.split(':').map(s => s.trim())
-
-      if (!type || !query) return; // Skip invalid entries
-
-      const  response = responsePart.replace(/^Response: /i, '').trim()
-
-      //Handle questions
-      if(type.toLowerCase() === 'questions'){
-        const key = formatKeys(query)
-        if(!result.questions[key]){
-          result.questions[key] = {question: query, responses: []}
+        // Create a normalized key from the statement, replacing spaces with underscores and converting to lowercase
+        let firstValueKey = "";
+        for (let i = 0; i < firstValue.length; i++) {
+            if (firstValue.charCodeAt(i) === 32) firstValueKey += "_"; // Replace spaces with underscores
+            if (firstValue.toLowerCase().charCodeAt(i) >= 97 && firstValue.toLowerCase().charCodeAt(i) <= 122) {
+                firstValueKey += firstValue.charAt(i).toLowerCase(); // Append alphabetic characters in lowercase
+            }
         }
-        //add responses if not already present in responses array
-        if(!result.questions[key].responses.includes(response)){
-          result.questions[key].responses.push(response)
-        }
-      }
-      //handle orders
-      else if(type.toLowerCase() === 'orders'){
-        const key = formatKeys(query)
-        if(!result.orders[key]){
-          result.orders[key] = {order: query, responses: []}
-        }
-        //add items if not already present in items array
-        if(!result.orders[key].responses.includes(response)){
-          result.orders[key].responses.push(response)
-        }
-      }
-    })
 
-     // Create the final result based on whether questions or orders have data
-  const finalResult = {};
-  if (Object.keys(result.questions).length > 0) {
-    finalResult.questions = result.questions;
-  }
-  if (Object.keys(result.orders).length > 0) {
-    finalResult.orders = result.orders;
-  }
+        // Ensure the main type (e.g., 'questions', 'orders') exists in the results object
+        if (!results[firstKey]) results[firstKey] = {};
 
-    return JSON.stringify(finalResult, null, 2);
-  }
+        // Ensure the specific statement key (e.g., 'what_is_ounces') exists within the type
+        if (!results[firstKey][firstValueKey]) {
+            results[firstKey][firstValueKey] = {};
+            results[firstKey][firstValueKey][firstKey.slice(0, -1)] = firstValue; // Set the statement or description
+        }
+
+        // Ensure the 'responses' array exists within the specific statement key
+        if (!results[firstKey][firstValueKey]["responses"]) results[firstKey][firstValueKey]["responses"] = [];
+
+        // Add the response to the 'responses' array
+        results[firstKey][firstValueKey]["responses"].push(response);
+    });
+
+    // Return the results object
+    return results;
+}
 
 // const input = [
 //     'Questions: what is ounces? - Response: Ounce, unit of weight in the avoirdupois system',
