@@ -19,7 +19,7 @@ function opDebounce(func, delay, opt){
     }
     return function(){
         var context = this
-          args = arguments
+          var args = arguments
         if(first && leading){
             func.apply(context, args)
             first = false
