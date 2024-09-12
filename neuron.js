@@ -56,8 +56,8 @@ if (data.length === 0) return{}
   if (Object.keys(result.orders).length > 0) {
     finalResult.orders = result.orders;
   }
-
-    return JSON.stringify(finalResult, null, 2);
+return finalResult;
+    // return JSON.stringify(finalResult, null, 2);
   }
 
 // const input = [
@@ -67,6 +67,6 @@ if (data.length === 0) return{}
 //     'Orders: shutdown! - Response: Yes Sr!',
 //     'Orders: Quote something! - Response: Pursue what catches your heart, not what catches your eyes.'
 //   ]
-// //   console.log(neuron(input));
+//   console.log(neuron(input));
 // console.log( neuron(['Orders: shutdown please! - Response: no!'])
 // )
