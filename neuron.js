@@ -56,8 +56,8 @@ if (data.length === 0) return{}
   if (Object.keys(result.orders).length > 0) {
     finalResult.orders = result.orders;
   }
-return finalResult;
-    // return JSON.stringify(finalResult, null, 2);
+
+    return JSON.stringify(finalResult, null, 2);
   }
 
 // const input = [
