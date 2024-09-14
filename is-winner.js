@@ -5,12 +5,12 @@ async function isWinner(country){
     if(!winningCountries) return `${country} never was a winner`
     if(winningCountries.continent !== 'Europe') return `${country} is not what we are looking for because of the continent`
     const winRes = await db.getResults(winningCountries.id)
-    if(winningResults.length < 3) return `${country} is not what we are looking for because of the number of times it was champion`
+    if(winningResults.length < 3) return `${country}is not what we are looking for because of the number of times it was champion`
     let years = ""
     let res = ""
-    for(const result of winRes){
-        years += `${result.year}, `
-        res += `${result.score}`
+    for(const res of winRes){
+        years += `${res.year}, `
+        res += `${res.score}`
     }
-    return `${country} won the FIFA World Cup in ${years.slice(0, -2)} winning by ${results.slice(0, -2)}`
+    return `${country} won the FIFA World Cup in ${years.slice(0, -2)} winning by ${res.slice(0, -2)}`
 }
