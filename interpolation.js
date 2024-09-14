@@ -1,21 +1,23 @@
-function interpolation(step, start, end , callback, duration){
-    let distance = (end - start) / step;
-    const interval = duration / step;
-    let res = []
+function interpolation({ step, start, end, callback, duration }) {
+    const interval = duration / step; // Time between each callback execution
+    const distance = (end - start) / step; // Distance between each step
+    let currentStep = 0;
 
-    for (let i = 0; i < step; i++) {
-        setTimeout(()=>{
-            const x = start + (distance * i);
-            const y = interval * (i+1)
-            res.push([x, y])
-            callback([x, y])
+    function interpolateStep() {
+        if (currentStep < step) {
+            const x = start + distance * currentStep; // Interpolated x position
+            const y = interval * (currentStep + 1); // Interpolated y position (time point)
+            callback([x, y]);
 
-            if (i === step - 1) {
-                callback(res)
-            }
-        }, interval * i);
+            currentStep++;
+            setTimeout(interpolateStep, interval); // Schedule next step
+        }
+    }
+
+    // Start the first interpolation step
+    setTimeout(interpolateStep, interval);
 }
-}
+
 
 // interpolation(
 //     5,
