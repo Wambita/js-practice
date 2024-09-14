@@ -8,7 +8,7 @@ async function isWinner(country){
     if(!winningCountries) return `${country} never was a winner`
     if(winningCountries.continent !== 'Europe') return `${country} is not what we are looking for because of the continent`
     const winRes = await db.getResults(winningCountries.id)
-    if(winRes.length < 3) return `${country}is not what we are looking for because of the number of times it was champion`
+    if(winRes.length < 3) return `${country} is not what we are looking for because of the number of times it was champion`
     let years = ""
     let res = ""
     for(const res of winRes){
