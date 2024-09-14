@@ -1,5 +1,5 @@
+"use strict"
 function retry(count, callback){
-    return async function(...args){
     let attempts = 0
 
   return async function again(...args) {
@@ -10,7 +10,7 @@ function retry(count, callback){
     })
   }
 }
-}
+
 function timeout(delay, callback) {
     return async (...args) => {
         const timer = new Promise((resolve) => {
