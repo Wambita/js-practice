@@ -1,7 +1,7 @@
 async function getJson(path, params){
     let formatpar = ""
     for (const [k, v] of Object.entries(params)) {
-        formatpar += `${k}=${v}&.replaceAll(" ", "+")`
+        formatpar += `${k}=${v}&`.replaceAll(" ", "+")
     }
     let url  = `${path}?${formatpar.slice(0, -1)}`
 
