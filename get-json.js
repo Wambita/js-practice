@@ -1,9 +1,9 @@
 async function getJSON(path, params) {
-    let formatParams = ""
+    let formatPar = ""
     for (const [key, value] of Object.entries(params)) {
-        formatParams += `${key}=${value}&`.replaceAll(" ", "+")
+        formatPar += `${key}=${value}&`.replaceAll(" ", "+")
     }
-    let url = `${path}?${formatParams.slice(0, -1)}`
+    let url = `${path}?${formatPar.slice(0, -1)}`
 
     return await fetch(url).then(response => {
         if (!response.ok) throw new Error(response.statusText)
