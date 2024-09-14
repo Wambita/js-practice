@@ -10,7 +10,7 @@ async function getJson(path, params){
             return response.json()
     
     }).then(json => {
-        if(json["data"])return json["data"]
+        if(json["data"]) return json["data"]
         if(json["error"]) throw new Error(json["error"])
     })
     }
