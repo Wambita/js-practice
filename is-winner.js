@@ -13,7 +13,7 @@ async function isWinner(country){
     let res = ""
     for(const res of winRes){
         years += `${res.year}, `
-        res += `${res.score}`
+        res += `${res.score},`
     }
     return `${country} won the FIFA World Cup in ${years.slice(0, -2)} winning by ${res.slice(0, -2)}`
 }
