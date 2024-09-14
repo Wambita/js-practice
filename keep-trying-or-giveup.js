@@ -5,7 +5,7 @@ function retry(count, callback){
   return async function again(...args) {
     return await callback(...args).catch(err => {
         if(attempts >= count) throw err;
-        i++
+        attempts++
         return again(...args);
     })
   }
