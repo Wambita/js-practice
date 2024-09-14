@@ -1,7 +1,7 @@
 /*Promise.race
 Promise.all*/
 
-async function queryservers(serverName, q){
+async function queryServers(serverName, q){
     const url = `/${serverName}?q=${q}`.replaceAll(" ", "+")
     const urlBackup = `/${serverName}_backup?q=${q}`.replaceAll(" ", "+")
     return await Promise.race([getJson(url), getJson(urlBackup)])
