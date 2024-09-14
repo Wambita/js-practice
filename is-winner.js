@@ -11,7 +11,7 @@ async function isWinner(country){
     if(winRes.length < 3) return `${country} is not what we are looking for because of the number of times it was champion`
     let years = ""
     let res = ""
-    for (const result of winningResults) {
+    for (const result of winRes) {
         years += `${result.year}, `
         res += `${result.score}, `
     }
