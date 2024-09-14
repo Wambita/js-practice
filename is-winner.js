@@ -15,5 +15,5 @@ async function isWinner(country){
         years += `${result.year}, `
         res += `${result.score}, `
     }
-    return `${country} won the FIFA World Cup in ${years.slice(0, -2)} winning by ${results.slice(0, -2)}`
+    return `${country} won the FIFA World Cup in ${years.slice(0, -2)} winning by ${res.slice(0, -2)}`
 }
