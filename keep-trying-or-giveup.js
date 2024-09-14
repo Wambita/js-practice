@@ -1,4 +1,4 @@
-function timeout(delay, callback) {
+function retry(delay, callback) {
     return async function (...args) {
       // Create a race between the callback and a timeout promise
       return new Promise((resolve, reject) => {
