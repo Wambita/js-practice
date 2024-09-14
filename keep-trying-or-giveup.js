@@ -1,22 +1,30 @@
-function retry(delay, callback) {
+function retry(count, callback){
+    return async function(...args){
+    let attempts = 0
+
+    while(attempts <= count){
+        try{
+            return await callback(...args)
+        } catch(error){
+            attempts++
+            if(attempts > count){
+                throw new Error('timeout')            }
+        }
+    }
+}
+}
+function timeout(delay, callback) {
     return async function (...args) {
-      // Create a race between the callback and a timeout promise
-      return new Promise((resolve, reject) => {
-        // Set a timeout to reject the promise if the callback takes too long
-        const timeoutId = setTimeout(() => {
-          reject(new Error('timeout'));
-        }, delay);
+      // Create a promise that rejects after the specified delay
+      const timeoutPromise = new Promise((_, reject) =>
+        setTimeout(() => reject(new Error('timeout')), delay)
+      );
   
-        // Execute the async callback
+      // Race between the timeout promise and the callback promise
+      return Promise.race([
+        timeoutPromise,
         callback(...args)
-          .then((result) => {
-            clearTimeout(timeoutId); // Clear timeout if callback resolves
-            resolve(result);
-          })
-          .catch((error) => {
-            clearTimeout(timeoutId); // Clear timeout if callback throws an error
-            reject(error);
-          });
-      });
+      ]);
     };
   }
+  
