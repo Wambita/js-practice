@@ -1,16 +1,15 @@
-async function getJson(path, params){
-    let formatpar = ""
-    for (const [k, v] of Object.entries(params)) {
-        formatpar += `${k}=${v}&`.replaceAll(" ", "+")
+async function getJSON(path, params) {
+    let formatParams = ""
+    for (const [key, value] of Object.entries(params)) {
+        formatParams += `${key}=${value}&`.replaceAll(" ", "+")
     }
-    let url  = `${path}?${formatpar.slice(0, -1)}`
+    let url = `${path}?${formatParams.slice(0, -1)}`
 
     return await fetch(url).then(response => {
-        if(!response.ok) throw new Error(response.statusText)
-            return response.json()
-    
+        if (!response.ok) throw new Error(response.statusText)
+        return response.json()
     }).then(json => {
-        if(json["data"]) return json["data"]
-        if(json["error"]) throw new Error(json["error"])
+        if (json["data"]) return json["data"]
+        if (json["error"]) throw new Error(json["error"])
     })
-    }
+}
