@@ -1,3 +1,6 @@
+/*isWinner which accepts a string representing the name of a country. 
+It should use the winners "API" to return a resolved Promise with an appropriate string */
+
 async function isWinner(country){
     let err = false
     const winningCountries = await db.getWinner(country).catch(() => err = true)
