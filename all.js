@@ -9,7 +9,7 @@ async function all(promises){
                 obj[k] = v
                 continue
             }
-            await value.then(res => obj[k] = res).catch((error) => err = error)
+            await v.then(res => obj[k] = res).catch((error) => err = error)
         }
             if(err) throw err
             return obj
