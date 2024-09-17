@@ -83,7 +83,7 @@ const server = http.createServer((req, res) => {
     });
   } else {
     // Respond with 405 Method Not Allowed for non-POST requests
-    res.writeHeads(405, { 'Content-Type': 'application/json' });
+    res.writeHead(405, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ error: 'Method not allowed' }));
   }
 });
