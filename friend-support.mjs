@@ -14,21 +14,19 @@ const main = () => {
     }
 
     const resolvedFilePath = resolve(filePath);  // Resolve file path
+    const outputFile = outputFileName || (action === 'encode' ? 'cypher.txt' : 'clear.txt');
 
     try {
         // Read input file content
         const fileContent = readFileSync(resolvedFilePath, 'utf-8');
 
         let result;
-        let outputFile;
 
         // Perform the specified action
         if (action === 'encode') {
             result = Buffer.from(fileContent, 'utf-8').toString('base64');  // Encode to base64
-            outputFile = outputFileName || 'cypher.txt';  // Default output for encoded content
         } else if (action === 'decode') {
             result = Buffer.from(fileContent, 'base64').toString('utf-8');  // Decode from base64
-            outputFile = outputFileName || 'clear.txt';  // Default output for decoded content
         } else {
             console.error("Invalid action. Use 'encode' or 'decode'.");
             process.exit(1);  // Exit on invalid action
@@ -43,5 +41,4 @@ const main = () => {
     }
 };
 
-// Run the main function
 main();
