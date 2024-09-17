@@ -31,4 +31,4 @@ function inputDisco(input){
 }
 
 const result = inputDisco(input)
-console.log(result)
+writeToFile(result)
