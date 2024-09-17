@@ -33,7 +33,7 @@ const server = http.createServer(async (req, res) => {
 
                 // Respond with 500 Internal Server Error if something goes wrong
                 res.writeHead(500, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify({ error: 'Server failed' }));
+                res.end(JSON.stringify({ error: 'server failed' }));
             }
         });
     } else {
