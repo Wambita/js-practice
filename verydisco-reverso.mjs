@@ -1,12 +1,4 @@
-#!/usr/bin/env node;
-
-//script that
-/*
-takes the name of a file (with the extension) as a first argument
-reads this file
-deciphers the content of this file by reversing it from the very disco mode
-prints the result in the console
-*/
+#!/usr/bin/env node
 
 import fs from 'fs/promises'
 
@@ -17,7 +9,7 @@ function reverseDisco(word){
 
 //process input
 function inputDisco(input){
-    return input.split(' ').map(veryDisco).join(' ')
+    return input.split(' ').map(reverseDisco).join(' ')
 }
 
 async function readFile(file){
@@ -38,3 +30,12 @@ if(!file){
 }
 
 readFile(file)
+
+
+//script that
+/*
+takes the name of a file (with the extension) as a first argument
+reads this file
+deciphers the content of this file by reversing it from the very disco mode
+prints the result in the console
+*/
