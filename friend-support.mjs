@@ -1,44 +1,53 @@
-import { readFileSync, writeFileSync } from 'fs';
-import { resolve } from 'path';
+import { createServer } from 'http';
+import { readFile } from 'fs/promises';
+import { join } from 'path';
 
-// Main function to handle encoding/decoding
-const main = () => {
-    const filePath = process.argv[2];  // File path to read
-    const action = process.argv[3];    // Action: encode or decode
-    const outputFileName = process.argv[4] || null;  // Optional output file
-
-    // Validate arguments
-    if (!filePath || !action) {
-        console.error("Usage: node tell-it-cypher.mjs <file-path> <encode or decode> [output-file]");
-        process.exit(1);  // Exit if arguments are missing
-    }
-
-    const resolvedFilePath = resolve(filePath);  // Resolve file path
-    const outputFile = outputFileName || (action === 'encode' ? 'cypher.txt' : 'clear.txt');
-
-    try {
-        // Read input file content
-        const fileContent = readFileSync(resolvedFilePath, 'utf-8');
-
-        let result;
-
-        // Perform the specified action
-        if (action === 'encode') {
-            result = Buffer.from(fileContent, 'utf-8').toString('base64');  // Encode to base64
-        } else if (action === 'decode') {
-            result = Buffer.from(fileContent, 'base64').toString('utf-8');  // Decode from base64
-        } else {
-            console.error("Invalid action. Use 'encode' or 'decode'.");
-            process.exit(1);  // Exit on invalid action
-        }
-
-        // Write result to the output file
-        writeFileSync(resolve(outputFile), result, 'utf-8');
-        console.log(`Operation successful. Output written to ${outputFile}`);
-    } catch (error) {
-        console.error(`Error: ${error.message}`);
-        process.exit(1);  // Exit on file read/write error
-    }
+// Helper function to send JSON responses
+const sendJsonResponse = (res, statusCode, data) => {
+    res.writeHead(statusCode, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(data));
 };
 
-main();
+// Create the HTTP server
+const server = createServer(async (req, res) => {
+    // Handle GET requests
+    if (req.method === 'GET') {
+        // Extract guest name from the URL
+        const guestName = req.url.slice(1);
+        
+        // Check if guestName is provided
+        if (guestName) {
+            // Construct the file path for the guest's JSON file
+            const filePath = join(process.cwd(), 'guests', `${guestName}.json`);
+            
+            try {
+                // Read and parse the JSON file content
+                const fileContent = await readFile(filePath, 'utf-8');
+                const guestData = JSON.parse(fileContent);
+                
+                // Send the guest data as JSON response
+                sendJsonResponse(res, 200, guestData);
+            } catch (error) {
+                // Handle file not found error
+                if (error.code === 'ENOENT') {
+                    sendJsonResponse(res, 404, { error: 'guest not found' });
+                } else {
+                    // Handle other server errors
+                    sendJsonResponse(res, 500, { error: 'server failed' });
+                }
+            }
+        } else {
+            // Handle cases where guestName is not provided
+            sendJsonResponse(res, 404, { error: 'guest not found' });
+        }
+    } else {
+        // Handle non-GET requests
+        sendJsonResponse(res, 405, { error: 'Method Not Allowed' });
+    }
+});
+
+// Define the port and start the server
+const port = 5000;
+server.listen(port, () => {
+    console.log(`Server is listening on port ${port}`);
+});
