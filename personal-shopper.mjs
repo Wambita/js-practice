@@ -39,21 +39,21 @@ switch (command) {
         break;
 
     case 'add': {
-        const entry = args[0];
-        const quantity = isNaN(args[1]) ? 1 : Number(args[1]);
-
-        if (!entry) {
-            console.log('No elem specified..');
+            const entry = args[0]; // Get the item name from the arguments
+            const quantity = isNaN(args[1]) ? 1 : Number(args[1]); // Default quantity is 1 if not specified
+        
+            if (!entry) {
+                console.error('No elem specified..'); // Log error if no item name is provided
+                break;
+            }
+        
+            const list = readList(filename); // Read the current shopping list
+            list[entry] = (list[entry] || 0) + quantity; // Update the quantity for the item
+        
+            writeList(filename, list); // Write the updated list back to the file
+            console.log(`Added ${quantity} of "${entry}" to the list.`); // Confirm the addition
             break;
         }
-
-        const list = readList(filename);
-        list[entry] = (list[entry] || 0) + quantity;
-
-        writeList(filename, list);
-        console.log(`Added ${quantity} of "${entry}" to the list.`);
-        break;
-    }
 
     case 'rm': {
         const entry = args[0];
